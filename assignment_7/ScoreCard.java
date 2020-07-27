@@ -5,14 +5,19 @@ import java.util.*;
 import java.util.Map.Entry;
 
 public class ScoreCard {
+	private static Integer maxRun;
+	public static int getMaxRun() {
+		return maxRun;
+	}
 
-	@SuppressWarnings("rawtypes")
+
 	public static void main(String[] args) {
 		
 		// TODO Auto-generated method stub
-		Map<Integer,String> m=new HashMap<Integer,String>(); 
+		Map<String,Integer> m=new HashMap<String,Integer>(); 
 		Scanner sc=new Scanner(System.in);
 		int total=0;
+		 maxRun = 0 ;
 		System.out.println("enter number of batsmen : ");
 		int n=sc.nextInt();
 		System.out.println("Enter Runs Scored");
@@ -21,23 +26,33 @@ public class ScoreCard {
 			String name=sc.next();
 			
 			int run=sc.nextInt();
-			m.put(run,name);
-			total+=run;
+			m.put(name,run);
 			
-			
+			total+=run;	
 		}
-		//int max= Collections.max(m.keySet()); 
 		
 		System.out.println("Players who batted ");
-		for(Map.Entry map:m.entrySet()) {
-            System.out.println(map.getKey()+" - "+map.getValue());
-        }
-		System.out.println("Total Score : "+total);
-		//System.out.println("Name of Highest Scorer : " +m.get(max));
+		for (Map.Entry<String, Integer> map1 : m.entrySet()) {
+			System.out.println(map1.getKey() );
+		}
 		
-		
-	
-		
+		System.out.println("Scores by players ");
+		for (Map.Entry<String, Integer> map: m.entrySet()) {
+			System.out.print(map.getKey() + " : ");
+			System.out.println(map.getValue());
+			if(maxRun < map.getValue())
+				maxRun = map.getValue();
+			
+		}
+		String str = null;
+		for (Map.Entry<String, Integer> map : m.entrySet()) { 
+			if (maxRun.equals(map.getValue()))
+				str = map.getKey();
+		}
+		 
+		System.out.println("Total Score : " + total);
+		System.out.println("Name of Highest Scorer : " + str);
+		System.out.println("Runs Scored by Dhoni : " + m.get("Dhoni"));
 	}
-
-}
+	}
+		

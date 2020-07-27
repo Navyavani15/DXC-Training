@@ -9,6 +9,7 @@ public class StudentMarks {
 		Scanner sc=new Scanner(System.in);
 		 ArrayList<Integer> list = new ArrayList<Integer>();
 		 
+		 
 		float avg=0;
 		System.out.print("Enter number of students ");
 		int n =sc.nextInt();
@@ -19,9 +20,11 @@ public class StudentMarks {
 			list.add(mark);	
 			avg=avg+mark;
 		}
+		ArrayList<Integer> list1 = new ArrayList<Integer>(list);
 		sc.close();		
+		Collections.sort(list1);
+		int higest=list1.get(n-1);
 		
-		int higest=list.get(n-1);
 		
 		
 		System.out.println("Highest Marks :"+higest);
@@ -34,11 +37,11 @@ public class StudentMarks {
 		System.out.println();
 		System.out.println("3rd Student marks : "+list.get(2));
 
-		Collections.sort(list);
+		
 		System.out.print("Sorted : ");
 		for(int i=0;i<n;i++)
 		{
-			System.out.print((i+1)+"-"+list.get(i)+" ");
+			System.out.print((i+1)+"-"+list1.get(i)+" ");
 		}
 		
 	}
